@@ -58,24 +58,49 @@ export class Create{
     insert_row(row:any[]){
         // code to insrt row
         this.table.push(row);
-        fs.writeFileSync(this.full_table_name, JSON.stringify(this.table));
+        fs.writeFileSync(this.full_table_name, JSON.stringify({"array":this.table}));
         this.read_table_from_file();//this call is for safety pupose
     }
 
-    update_row(row:any[], find:string){
+    update_one_row(row:any[], find:any[]=["col_index", "value"]){
+        // this update row in find fiter
+        let curIndexRow = this.find_one_row(find);
+        this.table[curIndexRow[0]] = row;
+        fs.writeFileSync(this.full_table_name, JSON.stringify({"array":this.table}));
+        this.read_table_from_file();
+    }
+ 
 
+    find_one_row(find:any[]=["col_index", "value"]){
+        //returns the first find
+        //returns array with index at position zero and row array at position 1
+        let col_index:string = find[0];
+        let value:any = find[1];
+        let curValue:any;
+        for (let index = 0; index < this.table.length; index++) {
+           curValue = this.table[index][col_index]
+           if (curValue == value){
+               return [index,  this.table[index]];
+           } 
+        }
+        
+        throw new Error ("Row not found");
     }
 
 
-    find_row( find:string){
-        //retturns single row
 
-    }
-
-
-
-    delete_row( find:string){
+    delete_one_row(find:any[]=["col_index", "value"]){
         // delete row 
+        let curIndexRow = this.find_one_row(find);
+        console.log(curIndexRow[0]);
+        let array:any[] = this.table;
+
+        array.splice(curIndexRow[0], 1);
+         this.table = array;
+    
+        fs.writeFileSync(this.full_table_name, JSON.stringify({"array":this.table}));
+        this.read_table_from_file();
+
     }
 
     

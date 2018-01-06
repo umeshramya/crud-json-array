@@ -43,15 +43,42 @@ var Create = /** @class */ (function () {
     Create.prototype.insert_row = function (row) {
         // code to insrt row
         this.table.push(row);
-        fs.writeFileSync(this.full_table_name, JSON.stringify(this.table));
+        fs.writeFileSync(this.full_table_name, JSON.stringify({ "array": this.table }));
+        this.read_table_from_file(); //this call is for safety pupose
     };
-    Create.prototype.update_row = function (row, find) {
+    Create.prototype.update_one_row = function (row, find) {
+        if (find === void 0) { find = ["col_index", "value"]; }
+        // this update row in find fiter
+        var curIndexRow = this.find_one_row(find);
+        this.table[curIndexRow[0]] = row;
+        fs.writeFileSync(this.full_table_name, JSON.stringify({ "array": this.table }));
+        this.read_table_from_file();
     };
-    Create.prototype.find_row = function (find) {
-        //retturns single row
+    Create.prototype.find_one_row = function (find) {
+        if (find === void 0) { find = ["col_index", "value"]; }
+        //returns the first find
+        //returns array with index at position zero and row array at position 1
+        var col_index = find[0];
+        var value = find[1];
+        var curValue;
+        for (var index = 0; index < this.table.length; index++) {
+            curValue = this.table[index][col_index];
+            if (curValue == value) {
+                return [index, this.table[index]];
+            }
+        }
+        throw new Error("Row not found");
     };
-    Create.prototype.delete_row = function (find) {
+    Create.prototype.delete_one_row = function (find) {
+        if (find === void 0) { find = ["col_index", "value"]; }
         // delete row 
+        var curIndexRow = this.find_one_row(find);
+        console.log(curIndexRow[0]);
+        var array = this.table;
+        array.splice(curIndexRow[0], 1);
+        this.table = array;
+        fs.writeFileSync(this.full_table_name, JSON.stringify({ "array": this.table }));
+        this.read_table_from_file();
     };
     return Create;
 }());
