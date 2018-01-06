@@ -1,0 +1,30 @@
+{
+  "name": "crud-json-array",
+  "version": "0.0.1",
+  "description": "This module is creating manipulating JSON array. That is create table, insert, update, select and delete. useful for small data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JSON",
+    "small",
+    "data",
+    "CRUD"
+  ],
+  "author": "Dr Umesh R Bilagi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^8.5.7",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umeshramya/crud-json-array.git"
+  },
+  "bugs": {
+    "url": "https://github.com/umeshramya/crud-json-array/issues"
+  },
+  "homepage": "https://github.com/umeshramya/crud-json-array#readme"
+}
