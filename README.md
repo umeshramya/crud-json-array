@@ -16,3 +16,15 @@ This is storing small amount of data in columan and row format. key are column n
 ## update row
 
 ## delete row
+#### code to install
+**npm i crud-json-array**
+
+## code for implimentation
+```
+    var DB = require("crud-json-array");
+
+    var curDB = new DB.CRUD();
+
+    curDB.create_database("modtest");// modtest name of databse
+
+```
