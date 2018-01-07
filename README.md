@@ -38,10 +38,27 @@ This is storing small amount of data in columan and row format. for exmple stori
     curDB.create_table("fTable",["name", "age", "sex"]);
 
 ```
+
+## Code to create more than one table
+```
+    //below exmple shows way to create three table in side folder data
+    var DB = require("crud-json-array");
+
+    var curTable_1 = new DB.CRUD("data");
+    curTable_1.create_table("fTable",["name", "age", "sex"]);
+
+    var curTable_2 = new DB.CRUD("data");
+    curTable_2.create_table("fTable",["paper1", "paper2", "paper3"]);
+
+    var curTable_3 = new DB.CRUD("data);
+    curTable_3.create_table("fTable",["taet1", "test2", "test3"]);
+
+
+```
 ## insert row
 ```
-    curDB.insert_row(["Rithik", 47, "male"]);
-    curDB.insert_row(["Varun", 27, "male"]);
+    curDB.insert_one_row(["Rithik", 47, "male"]);
+    curDB.insert_one_row(["Varun", 27, "male"]);
 ```
 
 ## find single row
@@ -59,11 +76,13 @@ This is storing small amount of data in columan and row format. for exmple stori
     curDB.delete_one_row([0, "Umesh"]);
 ```
 ## read table (all)
-Two way to read
-1. from file `var tableFile = curDB.read_table_from_file();`
-2. from memory `var tableMemory = curDB.read_table_in_memory()`
+    Two way to read
+    1. from file `var tableFile = curDB.read_table_from_file();`
+    2. from memory `var tableMemory = curDB.read_table_in_memory()`
 
-use in Momery as avoid from file method
+    use in Momery as avoid from file method
 
-
-
+## get table name with path
+```
+    curDb.get_table_full_path_name
+```

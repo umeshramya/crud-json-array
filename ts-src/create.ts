@@ -103,6 +103,13 @@ export class Create{
 
     }
 
+    get_table_full_path_name(){
+        // returns this path and table name
+        return this.full_table_name;
+    }
+
+    
+
     
 
 
