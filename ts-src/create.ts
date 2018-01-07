@@ -36,8 +36,8 @@ export class Create{
             var createStream = fs.createWriteStream(this.full_table_name);
             createStream.end();
             fs.writeFileSync(this.full_table_name, JSON.stringify({array : [cols]}));
-            this.read_table_from_file();
         }
+        this.read_table_from_file();
     }
 
     read_table_from_file(){
@@ -55,7 +55,7 @@ export class Create{
         return this.table
     }
 
-    insert_row(row:any[]){
+    insert_one_row(row:any[]){
         // code to insrt row
         this.table.push(row);
         fs.writeFileSync(this.full_table_name, JSON.stringify({"array":this.table}));

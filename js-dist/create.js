@@ -25,8 +25,8 @@ var Create = /** @class */ (function () {
             var createStream = fs.createWriteStream(this.full_table_name);
             createStream.end();
             fs.writeFileSync(this.full_table_name, JSON.stringify({ array: [cols] }));
-            this.read_table_from_file();
         }
+        this.read_table_from_file();
     };
     Create.prototype.read_table_from_file = function () {
         // reads the table file
@@ -40,7 +40,7 @@ var Create = /** @class */ (function () {
         // this reads table from the memory
         return this.table;
     };
-    Create.prototype.insert_row = function (row) {
+    Create.prototype.insert_one_row = function (row) {
         // code to insrt row
         this.table.push(row);
         fs.writeFileSync(this.full_table_name, JSON.stringify({ "array": this.table }));
