@@ -80,6 +80,10 @@ var Create = /** @class */ (function () {
         fs.writeFileSync(this.full_table_name, JSON.stringify({ "array": this.table }));
         this.read_table_from_file();
     };
+    Create.prototype.get_table_full_path_name = function () {
+        // returns this path and table name
+        return this.full_table_name;
+    };
     return Create;
 }());
 exports.Create = Create;

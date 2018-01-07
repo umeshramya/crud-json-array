@@ -84,5 +84,5 @@ This is storing small amount of data in columan and row format. for exmple stori
 
 ## get table name with path
 ```
-    curDb.get_table_full_path_name
+    curDb.get_table_full_path_name();
 ```
