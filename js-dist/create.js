@@ -69,7 +69,6 @@ class Create {
     delete_one_row(find = ["col_index", "value"]) {
         // delete row 
         let curIndexRow = this.find_one_row(find);
-        console.log(curIndexRow[0]);
         let array = this.table;
         array.splice(curIndexRow[0], 1);
         this.table = array;
