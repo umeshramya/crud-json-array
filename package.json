@@ -1,6 +1,6 @@
 {
   "name": "crud-json-array",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This module is creating manipulating JSON array. That is create table, insert, update, select and delete. useful for small data",
   "main": "index.js",
   "scripts": {
