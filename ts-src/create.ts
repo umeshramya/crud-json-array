@@ -92,7 +92,6 @@ export class Create{
     delete_one_row(find:any[]=["col_index", "value"]){
         // delete row 
         let curIndexRow = this.find_one_row(find);
-        console.log(curIndexRow[0]);
         let array:any[] = this.table;
 
         array.splice(curIndexRow[0], 1);
