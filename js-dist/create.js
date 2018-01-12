@@ -5,6 +5,7 @@ This creat the folder and files a single table file
 for more then one table use on more instanc of this class.
 */
 const fs = require("fs");
+const util_1 = require("util");
 class Create {
     constructor() {
         this.dbPath;
@@ -72,6 +73,15 @@ class Create {
         let array = this.table;
         array.splice(curIndexRow[0], 1);
         this.table = array;
+        fs.writeFileSync(this.full_table_name, JSON.stringify({ "array": this.table }));
+        this.read_table_from_file();
+    }
+    write_full_table_in_bulk(curTable) {
+        // This method writes full table as array to file in one transaction
+        if (util_1.isUndefined(curTable) || curTable.length == 0) {
+            throw new Error("table array van not be empty");
+        }
+        this.table = curTable;
         fs.writeFileSync(this.full_table_name, JSON.stringify({ "array": this.table }));
         this.read_table_from_file();
     }

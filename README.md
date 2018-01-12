@@ -84,3 +84,8 @@ Each instance of this module produces only one table i.e table_name.json
 ```
     curDb.get_table_full_path_name();
 ```
+## Write Full table in one bulk
+ curDB.write_full_table_in_bulk(curTable)// curtable is array conataing 
+
+```
+

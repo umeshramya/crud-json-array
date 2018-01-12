@@ -102,6 +102,17 @@ export class Create{
 
     }
 
+    write_full_table_in_bulk(curTable:any[]){
+        // This method writes full table as array to file in one transaction
+        if(isUndefined(curTable) || curTable.length == 0){
+            throw new Error ("table array van not be empty");
+        }
+        this.table = curTable
+        fs.writeFileSync(this.full_table_name, JSON.stringify({"array":this.table}));
+        this.read_table_from_file();
+
+    }
+
     get_table_full_path_name(){
         // returns this path and table name
         return this.full_table_name;
